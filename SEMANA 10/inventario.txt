@@ -1,0 +1,7 @@
+Arroz,50
+Leche,30
+Pan,40
+Huevos,60
+Manzanas,25
+Az?car,20
+Aceite,15
