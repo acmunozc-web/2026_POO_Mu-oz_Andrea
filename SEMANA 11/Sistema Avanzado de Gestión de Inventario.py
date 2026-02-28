@@ -24,17 +24,17 @@ class Inventario:
 
     def agregar_producto(self, producto):
         if producto.id in self.productos:
-            print("⚠️ Ya existe un producto con ese ID.")
+            print("️ Ya existe un producto con ese ID.")
         else:
             self.productos[producto.id] = producto
-            print("✅ Producto agregado correctamente.")
+            print(" Producto agregado correctamente.")
 
     def eliminar_producto(self, id):
         if id in self.productos:
             del self.productos[id]
-            print("✅ Producto eliminado.")
+            print(" Producto eliminado.")
         else:
-            print("⚠️ No se encontró un producto con ese ID.")
+            print("️ No se encontró un producto con ese ID.")
 
     def actualizar_producto(self, id, cantidad=None, precio=None):
         if id in self.productos:
@@ -42,9 +42,9 @@ class Inventario:
                 self.productos[id].cantidad = cantidad
             if precio is not None:
                 self.productos[id].precio = precio
-            print("✅ Producto actualizado.")
+            print(" Producto actualizado.")
         else:
-            print("⚠️ No se encontró un producto con ese ID.")
+            print(" No se encontró un producto con ese ID.")
 
     def buscar_por_nombre(self, nombre):
         resultados = [p for p in self.productos.values() if p.nombre.lower() == nombre.lower()]
@@ -52,28 +52,28 @@ class Inventario:
             for p in resultados:
                 print(p)
         else:
-            print("⚠️ No se encontraron productos con ese nombre.")
+            print("️ No se encontraron productos con ese nombre.")
 
     def mostrar_todos(self):
         if self.productos:
             for p in self.productos.values():
                 print(p)
         else:
-            print("⚠️ El inventario está vacío.")
+            print("️ El inventario está vacío.")
 
     def guardar_en_archivo(self, archivo):
         with open(archivo, "w") as f:
             json.dump({id: vars(p) for id, p in self.productos.items()}, f)
-        print("💾 Inventario guardado en archivo.")
+        print(" Inventario guardado en archivo.")
 
     def cargar_desde_archivo(self, archivo):
         try:
             with open(archivo, "r") as f:
                 data = json.load(f)
                 self.productos = {id: Producto(**info) for id, info in data.items()}
-            print("📂 Inventario cargado desde archivo.")
+            print(" Inventario cargado desde archivo.")
         except FileNotFoundError:
-            print("⚠️ No se encontró el archivo, se iniciará un inventario vacío.")
+            print("️ No se encontró el archivo, se iniciará un inventario vacío.")
 
 
 # -------------------------------
@@ -144,11 +144,11 @@ def menu():
             inventario.guardar_en_archivo("inventario.json")
 
         elif opcion == "7":
-            print("👋 Saliendo del sistema...")
+            print(" Saliendo del sistema...")
             break
 
         else:
-            print("⚠️ Opción inválida, intente nuevamente.")
+            print("️ Opción inválida, intente nuevamente.")
 
 
 # -------------------------------
